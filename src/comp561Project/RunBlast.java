@@ -15,7 +15,8 @@ public class RunBlast {
 		
 		File reads = new File(queryDir);
 		for(File file : reads.listFiles()){
-			ProcessBuilder builder = new ProcessBuilder("cmd.exe", "/c", changeDir + db + " -query " + file.getAbsolutePath() + " -out " + outDir + "Blast_" + file.getName());
+			ProcessBuilder builder = new ProcessBuilder("cmd.exe", "/c", changeDir + db + " -query " + file.getAbsolutePath() + " -out " + outDir + "Blast_" + file.getName()
+															+ " -max_target_seqs 1 " + " -outfmt \"7 sseqid qstart qend sstart send qlen\"");
 			builder.redirectErrorStream(true);
 			Process p = builder.start();
 			BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
@@ -27,13 +28,3 @@ public class RunBlast {
 	}
 
 }
-//ProcessBuilder builder = new ProcessBuilder("cmd.exe", "/c", "cd \"C:/Program Files/NCBI/blast-2.2.31+/bin\" && blastn -db " + db + " -query " + query + " -out " + results);
-//builder.redirectErrorStream(true);
-//Process p = builder.start();
-//BufferedReader r = new BufferedReader(new InputStreamReader(p.getInputStream()));
-//String line;
-//while (true) {
-//    line = r.readLine();
-//    if (line == null) { break; }
-//    System.out.println(line);
-//}
