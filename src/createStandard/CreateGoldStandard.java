@@ -17,7 +17,7 @@ public class CreateGoldStandard {
 		BlastReader blastReader = new BlastReader();
 		String blastFolder = "C:/Users/daveguy/workspace/Comp561Project/files/blastOutput";
 		String goldStandardLocation = "C:/Users/daveguy/workspace/Comp561Project/files/goldStandard.txt";
-		final int OVERLAP_THRESHOLD = 20;
+		final int OVERLAP_THRESHOLD = 30;
 		
 		//[querystart, queryend, seqstart, seqend, querylength]
 		Map<Integer, int[]> blastResults = blastReader.loadBlastResults(blastFolder);
@@ -54,6 +54,7 @@ public class CreateGoldStandard {
 
 	private static Map<Integer, List<Integer>> findAllMatches(Map<Integer, int[]> readLocationInGenome, int threshold) {
 		Map<Integer, List<Integer>> matches = new HashMap<Integer, List<Integer>>();
+		
 		for(Entry<Integer, int[]> read : readLocationInGenome.entrySet()){
 			for(Entry<Integer, int[]> readCompare : readLocationInGenome.entrySet()){
 				if(read.getKey().intValue() != readCompare.getKey().intValue()){
@@ -84,7 +85,10 @@ public class CreateGoldStandard {
 		if((rCompEnd > rStart + threshold) && (rCompEnd < rEnd)){
 			overlaps = true;
 		}
-		if((rCompStart > rStart) && (rCompStart < rEnd - threshold)){
+		else if((rCompStart > rStart) && (rCompStart < rEnd - threshold)){
+			overlaps = true;
+		}
+		else if((rCompStart < rStart) && (rEnd < rCompEnd)){
 			overlaps = true;
 		}
 		

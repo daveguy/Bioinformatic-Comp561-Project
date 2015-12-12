@@ -1,4 +1,4 @@
-package comp561Project;
+package testsAndDepricated;
  
 import java.util.Arrays;
 
