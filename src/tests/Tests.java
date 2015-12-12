@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import comp561Project.*;
+import createStandard.CreateGoldStandard;
 
 import org.junit.Test;
 

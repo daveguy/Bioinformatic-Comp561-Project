@@ -1,4 +1,4 @@
-package comp561Project;
+package createStandard;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -29,7 +29,7 @@ public class SplitReads {
 				writer.close();
 				readNumber++;
 			}
-			
+			reader.close();
 		}
 		catch(Exception e){
 			e.printStackTrace();

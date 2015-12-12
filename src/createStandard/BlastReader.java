@@ -1,4 +1,4 @@
-package comp561Project;
+package createStandard;
 
 import java.io.BufferedReader;
 import java.io.File;

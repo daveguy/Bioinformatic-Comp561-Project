@@ -22,7 +22,7 @@ public class ReadsReader {
 			reads.put(id, line);
 			id++;
 		}
-		
+		reader.close();
 		return reads;
 		
 	}
