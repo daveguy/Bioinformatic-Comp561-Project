@@ -1,4 +1,4 @@
-package analyze;
+package comp561Project;
 
 import java.io.BufferedReader;
 import java.io.File;
