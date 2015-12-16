@@ -15,9 +15,10 @@ public class TestAnalyze {
 	@Test
 	public void test() {
 		Map<Integer, Integer[]> goldStandard = new HashMap<Integer, Integer[]>();
-		goldStandard.put(1, new Integer[]{2,3,5,8});
-		goldStandard.put(2, new Integer[]{1,4,8,9});
-		goldStandard.put(3, new Integer[]{1,4,6,10});
+		goldStandard.put(1, new Integer[]{2,3,5,8,24,13});
+		goldStandard.put(2, new Integer[]{1,4,8,9,13});
+		goldStandard.put(3, new Integer[]{1,4,6,10,11});
+		goldStandard.put(4, new Integer[]{1,4,6,24,36});
 		
 		Map<Integer, Integer[]> results = new HashMap<Integer, Integer[]>();
 		results.put(1, new Integer[]{2,3,5,8,6,9,10});

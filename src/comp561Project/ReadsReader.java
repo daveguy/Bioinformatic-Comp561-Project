@@ -12,7 +12,7 @@ public class ReadsReader {
 		Map<Integer, String> reads = new HashMap<Integer, String>();
 		BufferedReader reader = new BufferedReader(new FileReader(filepath));
 		String line;
-		int id = 0;
+		int id = 1;
 		while((line = reader.readLine()) != null){
 			if(line.charAt(0) == '>'){//header, read next line
 				line = reader.readLine();

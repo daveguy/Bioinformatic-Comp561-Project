@@ -17,7 +17,7 @@ public class CreateGoldStandard {
 		BlastReader blastReader = new BlastReader();
 		String blastFolder = "C:/Users/daveguy/workspace/Comp561Project/files/blastOutput";
 		String goldStandardLocation = "C:/Users/daveguy/workspace/Comp561Project/files/goldStandard.txt";
-		final int OVERLAP_THRESHOLD = 30;
+		final int OVERLAP_THRESHOLD = 100;
 		
 		//[querystart, queryend, seqstart, seqend, querylength]
 		Map<Integer, int[]> blastResults = blastReader.loadBlastResults(blastFolder);

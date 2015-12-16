@@ -48,11 +48,12 @@ public class AlignementTest {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		String querySeq = reads.get(1);
+		String querySeq = reads.get(1).substring(0, 201);
 		String tergetSeq = reads.get(2);
 		DNASequence query = new DNASequence(querySeq,AmbiguityDNACompoundSet.getDNACompoundSet());
 		DNASequence target = new DNASequence(tergetSeq,AmbiguityDNACompoundSet.getDNACompoundSet());
 		SubstitutionMatrix<NucleotideCompound> matrix = SubstitutionMatrixHelper.getNuc4_4();
+		
  
 		SimpleGapPenalty gapP = new SimpleGapPenalty();
 		gapP.setOpenPenalty((short)5);
@@ -63,6 +64,8 @@ public class AlignementTest {
 						PairwiseSequenceAlignerType.LOCAL, gapP, matrix);
  
 		System.out.println(psa.getLength());
+		System.out.println(psa.getCompoundInQueryAt(9).toString().equals("-"));
+		System.out.println(psa);
 		
 	}
  

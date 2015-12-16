@@ -2,6 +2,7 @@ package analyze;
 
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 public class ResultsAnalyzer {
 
@@ -15,11 +16,11 @@ public class ResultsAnalyzer {
 	private double getPrecision(Map<Integer, Integer[]> goldStandard, Map<Integer, Integer[]> results) {
 		int positive = 0;
 		int total = getNumMatches(results);
-		for(Entry<Integer, Integer[]> entry : results.entrySet()){
-			int id = entry.getKey();
+		for(Entry<Integer, Integer[]> resultsEntry : results.entrySet()){
+			int id = resultsEntry.getKey();
 			Integer[] standardMatches = goldStandard.get(id);
-			for(Integer match : entry.getValue()){
-				if(contains(standardMatches, match)){
+			for(Integer resultsMatch : resultsEntry.getValue()){
+				if(contains(standardMatches, resultsMatch)){
 					positive++;
 				}
 			}	
@@ -30,17 +31,26 @@ public class ResultsAnalyzer {
 
 	private double getRecall(Map<Integer, Integer[]> goldStandard, Map<Integer, Integer[]> results) {
 			int positive = 0;
-			int total = getNumMatches(goldStandard);
-			for(Entry<Integer, Integer[]> entry : results.entrySet()){
-				int id = entry.getKey();
+			int total = getNumMatches(goldStandard, results.keySet());
+			for(Entry<Integer, Integer[]> resultsEntry : results.entrySet()){
+				int id = resultsEntry.getKey();
 				Integer[] standardMatches = goldStandard.get(id);
-				for(Integer match : entry.getValue()){
-					if(contains(standardMatches, match)){
+				for(Integer resultsMatch : resultsEntry.getValue()){
+					if(contains(standardMatches, resultsMatch)){
 						positive++;
 					}
 				}	
 			}
 		return (double)positive / total;
+	}
+
+	private int getNumMatches(Map<Integer, Integer[]> goldStandard, Set<Integer> keySet) {
+		int total = 0;
+		for(Integer id : keySet){
+			total += goldStandard.get(id).length;
+		}
+		
+		return total;
 	}
 
 	private int getNumMatches(Map<Integer, Integer[]> allMatches) {

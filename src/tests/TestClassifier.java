@@ -16,11 +16,11 @@ public class TestClassifier {
 	
 	@Test
 	public void testAlignmentScore() throws CompoundNotFoundException {
-		String targetSeq = "ACGAGTGACCGTGTTTCCCGCCTGGT";
-		String querySeq =  "ACGAGTGCGTGTTTTCCCGCCTGGTCCC";
+		String querySeq =  "ACGAGTGCGTGTTTTCCCAGCCTGGTCCC";
+		String targetSeq = "ACGAGTGACCGTGTTTACCCGCCTGGT";
 		SequencePair<DNASequence, NucleotideCompound> alignment = aligner.getAlignment(querySeq, targetSeq);
 		System.out.println(alignment);
-		assertEquals(84, Classifier.getAlignmentScore(alignment));
+		assertEquals(104, Classifier.getAlignmentScore(alignment));
 	}
 
 }
